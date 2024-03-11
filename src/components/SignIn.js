@@ -49,7 +49,9 @@ export default function SignIn({ setName }) {
   const classes = useStyles();
   const [disabled, setDisabled ] = useState(true);
   const [string, setString] = useState('');
-  console.log({ disabled, string});
+  const [isComposed, setIsComposed] = useState(false);
+
+  // console.log({ disabled, string, isComposed});
 
   useEffect( () => {
     const disabled = string === ''
@@ -76,14 +78,21 @@ export default function SignIn({ setName }) {
             autoComplete="email"
             autoFocus
             onChange={(e) => setString(e.target.value)}
+            
+            onCompositionStart={() => setIsComposed(true) }
+            onCompositionEnd={() => setIsComposed(false) }
+            
             onKeyDown={(e) => {
-                console.log({key: e.key});
+                // console.log({key: e.key});
+                if (isComposed) return;
+
                 if (e.key === 'Enter'){
                     setName(e.target.value);
                     e.preventDefault();
                 }
                 
             }}
+            
           />
          
           
