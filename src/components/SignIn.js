@@ -76,6 +76,14 @@ export default function SignIn({ setName }) {
             autoComplete="email"
             autoFocus
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+                console.log({key: e.key});
+                if (e.key === 'Enter'){
+                    setName(e.target.value);
+                    e.preventDefault();
+                }
+                
+            }}
           />
          
           
