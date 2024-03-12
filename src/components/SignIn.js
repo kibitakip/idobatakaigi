@@ -79,8 +79,6 @@ export default function SignIn({ setName }) {
             autoFocus
             onChange={(e) => setString(e.target.value)}
             
-            onCompositionStart={() => setIsComposed(true) }
-            onCompositionEnd={() => setIsComposed(false) }
             
             onKeyDown={(e) => {
                 // console.log({key: e.key});
@@ -92,7 +90,9 @@ export default function SignIn({ setName }) {
                 }
                 
             }}
-            
+            onCompositionStart={() => setIsComposed(true) }
+            onCompositionEnd={() => setIsComposed(false) }
+
           />
          
           
